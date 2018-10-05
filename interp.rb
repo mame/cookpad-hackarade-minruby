@@ -106,7 +106,6 @@ def evaluate(exp, env)
   when "func_call"
     # Lookup the function definition by the given function name.
     func = $function_definitions[exp[1]]
-    env = env.dup
 
     if func.nil?
       # We couldn't find a user-defined function definition;
@@ -165,12 +164,13 @@ def evaluate(exp, env)
 
       # func: [[1st formal parameter, 2nd formal parameter, ...], function body]
       # exp:  ["func_call", function_name, 1st actual parameter, 2nd actual parameter, ...]
+      env2 = {}
       i = 0
       while func[0][i] != nil
-        env[func[0][i]] = evaluate(exp[i + 2], env)
+        env2[func[0][i]] = evaluate(exp[i + 2], env)
         i = i + 1
       end
-      evaluate(func[1], env)
+      evaluate(func[1], env2)
     end
 
   when "func_def"
