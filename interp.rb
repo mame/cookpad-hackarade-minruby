@@ -7,7 +7,7 @@ def evaluate(exp, env)
   # exp: A current node of AST
   # env: An environment (explained later)
 
-  pp exp if ARGV.last == "--debug"
+  pp exp and pp '--------------------------------------------------' if ARGV.last == "--debug"
   case exp[0]
 
 #
