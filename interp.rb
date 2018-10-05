@@ -7,7 +7,7 @@ def evaluate(exp, env)
   # exp: A current node of AST
   # env: An environment (explained later)
 
-  pp exp and pp '--------------------------------------------------' if ARGV.last == "--debug"
+  pp "exp => #{exp}" and pp "env => #{env}" and pp '--------------------------------------------------' if ARGV.last == "--debug"
   case exp[0]
 
 #
@@ -106,6 +106,7 @@ def evaluate(exp, env)
   when "func_call"
     # Lookup the function definition by the given function name.
     func = $function_definitions[exp[1]]
+    env = env.dup
 
     if func.nil?
       # We couldn't find a user-defined function definition;
