@@ -4,7 +4,7 @@ require "open3"
 
 Dir.glob("test*.rb").sort.each do |rb|
   ruby_result, _status = Open3.capture2e("ruby #{rb}")
-  interp_result, _status = Open3.capture2e("./interp #{rb}")
+  interp_result, _status = Open3.capture2e("./interp.rb #{rb}")
   if ruby_result == interp_result
     puts ". #{rb}"
   else

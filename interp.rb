@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require "minruby"
 
 # An implementation of the evaluator
