@@ -6,7 +6,7 @@ require 'pp'
 
 MY_PROGRAM = 'interp.rb'
 
-Dir.glob('test*.rb').sort.each do |f|
+Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
   correct = `ruby #{f}`
   answer = `ruby #{MY_PROGRAM} #{f}`
 
