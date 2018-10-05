@@ -1,14 +1,27 @@
 #!/usr/bin/env ruby
 
-require "open3"
+require 'minruby'
+require 'colorize'
+require 'pp'
+require 'stringio'
 
-Dir.glob("test*.rb").sort.each do |rb|
-  ruby_result, _status = Open3.capture2e("ruby #{rb}")
-  interp_result, _status = Open3.capture2e("./interp.rb #{rb}")
-  if ruby_result == interp_result
-    puts ". #{rb}"
+MY_PROGRAM = 'interp.rb'
+
+Dir.glob('test*.rb').sort.each do |f|
+  correct = `ruby #{f}`
+  answer = `ruby #{MY_PROGRAM} #{f}`
+
+  print "#{f} => "
+  if correct == answer
+    puts "OK!".green
   else
-    puts "x #{rb}"
-    puts "#{interp_result}\n"
+    puts "NG".red
+
+    out = StringIO.new
+    PP.pp(minruby_parse(File.read(f)), out)
+    out.rewind
+    puts out.read.yellow
+
+    exit(1)
   end
 end
