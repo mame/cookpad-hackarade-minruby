@@ -210,7 +210,13 @@ def evaluate(exp, env)
     array[ evaluate(exp[2], env) ] = evaluate(exp[3], env)
 
   when "hash_new"
-    raise(NotImplementedError) # Problem 6
+    hash = {}
+    i = 1
+    while exp[i] != nil
+      hash[ evaluate(exp[i], env) ] = evaluate(exp[i + 1], env)
+      i = i + 2
+    end
+    hash
 
   else
     p("error")
