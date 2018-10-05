@@ -118,6 +118,22 @@ def evaluate(exp, env)
       # ... Problem 4
       when "Integer"
         Integer(evaluate(exp[2], env))
+      when "fizzbuzz"
+        n = evaluate(exp[2], env)
+        if n % 3 == 0
+          if n % 5 == 0
+            "FizzBuzz"
+          else
+            "Fizz"
+          end
+        else
+          if n % 5 == 0
+            "Buzz"
+          else
+            n
+          end
+        end
+
       else
         raise("unknown builtin function")
       end

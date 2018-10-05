@@ -7,7 +7,11 @@ require 'pp'
 MY_PROGRAM = 'interp.rb'
 
 Dir.glob("test#{ARGV[0]}*.rb").sort.each do |f|
-  correct = `ruby #{f}`
+  if f == 'test4-4.rb'
+    correct = `ruby -I. -rfizzbuzz #{f}`
+  else
+    correct = `ruby #{f}`
+  end
   answer = `ruby #{MY_PROGRAM} #{f}`
 
   print "#{f} => "
