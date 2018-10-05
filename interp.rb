@@ -193,10 +193,17 @@ def evaluate(exp, env)
 
   # You don't need advices anymore, do you?
   when "ary_new"
-    raise(NotImplementedError) # Problem 6
+    array = []
+    i = 1
+    while exp[i] != nil
+      array.push(evaluate(exp[i], env))
+      i = i + 1
+    end
+    array
 
   when "ary_ref"
-    raise(NotImplementedError) # Problem 6
+    array = evaluate(exp[1], env)
+    array[ evaluate(exp[2], env) ]
 
   when "ary_assign"
     raise(NotImplementedError) # Problem 6
