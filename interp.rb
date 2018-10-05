@@ -107,9 +107,9 @@ def evaluate(exp, env)
       #
       # Here, we could find a user-defined function definition.
       # The variable `func` should be a value that was stored at "func_def":
-      # parameter list and AST of function body.
+      # a parameter list and an AST of function body.
       #
-      # Function calls evaluates the AST of function body within a new scope.
+      # A function call evaluates the AST of function body within a new scope.
       # You know, you cannot access a varible out of function.
       # Therefore, you need to create a new environment, and evaluate the
       # function body under the environment.
