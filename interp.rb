@@ -206,7 +206,8 @@ def evaluate(exp, env)
     array[ evaluate(exp[2], env) ]
 
   when "ary_assign"
-    raise(NotImplementedError) # Problem 6
+    array = evaluate(exp[1], env)
+    array[ evaluate(exp[2], env) ] = evaluate(exp[3], env)
 
   when "hash_new"
     raise(NotImplementedError) # Problem 6
