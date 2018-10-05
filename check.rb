@@ -3,7 +3,6 @@
 require 'minruby'
 require 'colorize'
 require 'pp'
-require 'stringio'
 
 MY_PROGRAM = 'interp.rb'
 
@@ -17,10 +16,15 @@ Dir.glob('test*.rb').sort.each do |f|
   else
     puts "NG".red
 
-    out = StringIO.new
-    PP.pp(minruby_parse(File.read(f)), out)
-    out.rewind
-    puts out.read.yellow
+    puts "=== Expect ==="
+    puts correct
+    puts "=== Actual ==="
+    puts answer
+    code = File.read(f)
+    puts "=== Test Program ==="
+    puts code
+    puts "=== AST ==="
+    pp minruby_parse(code)
 
     exit(1)
   end
