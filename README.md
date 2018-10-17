@@ -47,7 +47,7 @@ This tree can be encoded in a data structure of Ruby arrays:
         ["lit", 2],
         ["lit", 3]]]
 
-You can easily see the correspondence between the original tree and this data, I believe :-)  Each array correspondes to each node of the tree strucutre.  The first element of each array is a string that represents its node type.  The second and later elements are its child nodes and/or auxiliary data.  `"lit"` is an abbreviation of *literal*, and its second element is an integer value of the literal.
+You can easily see the correspondence between the original tree and this data, I believe :-)  Each array corresponds to each node of the tree structure.  The first element of each array is a string that represents its node type.  The second and later elements are its child nodes and/or auxiliary data.  `"lit"` is an abbreviation of *literal*, and its second element is an integer value of the literal.
 
 We will create an "evaluator" that traverses this tree and runs its instruction.  In the case of the tree above, we can use recursive call to "evaluate" the left and right nodes to a value (in this case, an integer), and combines the two values as the label indicates.
 
@@ -170,7 +170,7 @@ If you have time, try the following problems.
 
 ### Implement your favorite Ruby feature
 
-Make your MinRuby interepreter support your favorite features, e.g., blocks, class/modules, eval, callcc, etc.
+Make your MinRuby interpreter support your favorite features, e.g., blocks, class/modules, eval, callcc, etc.
 
 ### Overtake Ruby
 
